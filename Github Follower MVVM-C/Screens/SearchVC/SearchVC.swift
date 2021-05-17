@@ -21,7 +21,7 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
         searchTextField.text = "Sallen0400"
         setupImageView()
         setupTextfield()

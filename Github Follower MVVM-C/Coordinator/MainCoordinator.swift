@@ -29,12 +29,14 @@ class MainCoordinator: Coordinator {
     
     func searchVC() {
         let child = SearchCoordinator(navigationController: navigationController)
+        child.parentCoordinator = self
         childCoordinator.append(child)
         child.start()
     }
     
     func followerListVC() {
         let child = FollowersCoordinator(navigationController: navigationController)
+        child.parentCoordinator = self
         childCoordinator.append(child)
         child.start()
     }

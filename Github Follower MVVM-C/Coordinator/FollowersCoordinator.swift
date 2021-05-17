@@ -8,6 +8,7 @@
 import UIKit
 
 class FollowersCoordinator: Coordinator {
+    weak var parentCoordinator: MainCoordinator?
     var childCoordinator: [Coordinator] = []
     
     var navigationController: UINavigationController
