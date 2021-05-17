@@ -1,0 +1,6 @@
+framework module Pods_Github_Follower_MVVM_C {
+  umbrella header "Pods-Github Follower MVVM-C-umbrella.h"
+
+  export *
+  module * { export * }
+}
