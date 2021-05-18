@@ -9,7 +9,7 @@ import UIKit
 
 class SearchCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinator?
-    var childCoordinator: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
     
     var navigationController: UINavigationController
     
@@ -21,6 +21,10 @@ class SearchCoordinator: Coordinator {
         let searchVC = SearchVC()
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         searchVC.coordinator = self
-        navigationController.pushViewController(searchVC, animated: true)
+        navigationController.pushViewController(searchVC, animated: false)
+    }
+    
+    func childDidFinish() {
+        parentCoordinator?.childDidFinish(self)
     }
 }

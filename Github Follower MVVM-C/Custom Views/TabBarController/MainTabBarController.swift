@@ -8,14 +8,17 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-        
-    let main = MainCoordinator(navigationController: UINavigationController())
+    
+    private let searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
+    private let followerCoordinator = FollowersCoordinator(navigationController: UINavigationController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        main.start()
-        viewControllers = [main.navigationController]
+        searchCoordinator.start()
+        followerCoordinator.start()
+        
+        viewControllers = [searchCoordinator.navigationController, followerCoordinator.navigationController]
     }
 
 }

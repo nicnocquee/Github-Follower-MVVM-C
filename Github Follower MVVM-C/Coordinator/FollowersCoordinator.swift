@@ -9,7 +9,7 @@ import UIKit
 
 class FollowersCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinator?
-    var childCoordinator: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
     
     var navigationController: UINavigationController
     
@@ -21,8 +21,11 @@ class FollowersCoordinator: Coordinator {
         let followersListVC = FollowersListVC()
         followersListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         followersListVC.coordinator = self
-        navigationController.pushViewController(followersListVC, animated: true)
+        navigationController.pushViewController(followersListVC, animated: false)
     }
     
+    func childDidFinish() {
+        parentCoordinator?.childDidFinish(self)
+    }
     
 }
