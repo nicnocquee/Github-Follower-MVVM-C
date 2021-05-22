@@ -9,35 +9,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol FollowersViewModelInput {
-    func didSelect(index: IndexPath)
-    func didSearch(user: String, page: Int)
-}
-
-protocol FollowersViewModelOutput {
-    var followers: Driver<[Follower]> { get }
-    var page: Driver<Void> { get set }
-}
-
-protocol FollowersViewModelType {
-    var inputs: FollowersViewModelInput { get }
-    var outputs: FollowersViewModelOutput { get }
-}
-
 class FollowerViewModel {
     
     // Input
-    let searchText      = PublishSubject<String>()
-    var page            = PublishSubject<Void>()
+    var searchText      = BehaviorRelay<String>(value: "")
+    var currentPage     = BehaviorRelay<Int>(value: 1)
     let errorMessage    = PublishSubject<Void>()
     
     // Output
     let hasUsername     = BehaviorSubject<Bool>(value: false)
     let hasMoreFollower = BehaviorSubject<Bool>(value: false)
-    var followers       = BehaviorSubject<[Follower]>(value: [])
+    var followers       = BehaviorRelay<[Follower]>(value: [])
     
     let disposeBag      = DisposeBag()
-    
     
     private let manager: NetworkManager
     
@@ -46,25 +30,13 @@ class FollowerViewModel {
     }
     
     func fetchFollowers() {
-        let currentPage = searchText
-            .filter { $0.count > 2 }
-            .distinctUntilChanged()
-                .flatMapLatest { searchText in
-                    return self.page.asObservable()
-                        .startWith(())
-                        .scan(0) { (pageNumber, _) -> Int in
-                            pageNumber + 1
-                        }
-                        .map { pageNumber in
-                            (searchText, pageNumber)
-                        }
-                }
-                .map { (searchText, pageNumber) in
-                    self.manager.getFollowers(with: searchText, page: pageNumber)
-                }
-        
-        currentPage.subscribe(onNext: { print($0) })
-            .disposed(by: disposeBag)
+        manager.getFollowers(with: searchText.value, page: currentPage.value)
+            .subscribe { [weak self] followers in
+//                self?.followers.value = followers
+                print(followers)
+            } onError: { [weak self] error in
+                print(error)
+            }.disposed(by: disposeBag)
         
     }
 }

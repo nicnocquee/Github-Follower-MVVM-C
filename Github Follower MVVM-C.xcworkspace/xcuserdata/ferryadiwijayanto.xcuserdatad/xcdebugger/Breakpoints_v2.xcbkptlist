@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "29FF7DF3-3DD1-4E71-A6B1-96358B8CDCE4"
+            uuid = "16DCFC5A-F7E2-43AE-8DF9-076736BF58D5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Github Follower MVVM-C/Screens/SearchVC/SearchVC.swift"
+            filePath = "Github Follower MVVM-C/View Models/FollowerViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "searchFollowers()"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "fetchFollowers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
