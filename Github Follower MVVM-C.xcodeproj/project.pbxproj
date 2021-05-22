@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		084C9DEB44A822B4F5AFF098 /* Pods_Github_Follower_MVVM_C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A403901A952F289AB1B0CC1 /* Pods_Github_Follower_MVVM_C.framework */; };
+		2F2EFB472654B75A00738D66 /* FollowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2EFB462654B75A00738D66 /* FollowerViewModel.swift */; };
 		2F3374C92652073B0062EAA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3374C82652073B0062EAA6 /* AppDelegate.swift */; };
 		2F3374CB2652073B0062EAA6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3374CA2652073B0062EAA6 /* SceneDelegate.swift */; };
 		2F3374D52652073C0062EAA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F3374D32652073C0062EAA6 /* LaunchScreen.storyboard */; };
@@ -42,10 +43,13 @@
 		2F58D50826522A7800D04EAD /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F58D50726522A7800D04EAD /* SearchCoordinator.swift */; };
 		2F58D50B26522B8E00D04EAD /* FollowersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F58D50A26522B8E00D04EAD /* FollowersCoordinator.swift */; };
 		2F76C5292652A7A900467EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F76C5282652A7A900467EC7 /* Assets.xcassets */; };
+		2FD4539726539ECE00AF42D7 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4539626539ECE00AF42D7 /* FavoritesCoordinator.swift */; };
+		2FD4539A26539EFC00AF42D7 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4539926539EFC00AF42D7 /* FavoritesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A403901A952F289AB1B0CC1 /* Pods_Github_Follower_MVVM_C.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github_Follower_MVVM_C.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F2EFB462654B75A00738D66 /* FollowerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerViewModel.swift; sourceTree = "<group>"; };
 		2F3374C52652073B0062EAA6 /* Github Follower MVVM-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Follower MVVM-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3374C82652073B0062EAA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F3374CA2652073B0062EAA6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		2F58D50726522A7800D04EAD /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		2F58D50A26522B8E00D04EAD /* FollowersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCoordinator.swift; sourceTree = "<group>"; };
 		2F76C5282652A7A900467EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Github Follower MVC/Github Follower MVC/Supports/Assets.xcassets"; sourceTree = "<group>"; };
+		2FD4539626539ECE00AF42D7 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		2FD4539926539EFC00AF42D7 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		34BADF43B9810CBE3594EB08 /* Pods-Github Follower MVVM-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github Follower MVVM-C.debug.xcconfig"; path = "Target Support Files/Pods-Github Follower MVVM-C/Pods-Github Follower MVVM-C.debug.xcconfig"; sourceTree = "<group>"; };
 		83496EC09578A475A0F3577B /* Pods-Github Follower MVVM-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github Follower MVVM-C.release.xcconfig"; path = "Target Support Files/Pods-Github Follower MVVM-C/Pods-Github Follower MVVM-C.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +179,7 @@
 		2F3374E5265208950062EAA6 /* Favorites VC */ = {
 			isa = PBXGroup;
 			children = (
+				2FD4539926539EFC00AF42D7 /* FavoritesVC.swift */,
 			);
 			path = "Favorites VC";
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 				2F337546265211D10062EAA6 /* MainCoordinator.swift */,
 				2F58D50726522A7800D04EAD /* SearchCoordinator.swift */,
 				2F58D50A26522B8E00D04EAD /* FollowersCoordinator.swift */,
+				2FD4539626539ECE00AF42D7 /* FavoritesCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 		2F3374E7265208AD0062EAA6 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				2F2EFB462654B75A00738D66 /* FollowerViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -454,12 +463,15 @@
 				2F3374F4265209740062EAA6 /* UIViewController+Ext.swift in Sources */,
 				2F33750B26520AB10062EAA6 /* GFTitleLabel.swift in Sources */,
 				2F33751B26520B590062EAA6 /* GFAlertVC.swift in Sources */,
+				2FD4539A26539EFC00AF42D7 /* FavoritesVC.swift in Sources */,
 				2F33752B26520C490062EAA6 /* GFEmptyStateView.swift in Sources */,
+				2FD4539726539ECE00AF42D7 /* FavoritesCoordinator.swift in Sources */,
 				2F3374FB265209D00062EAA6 /* GFButton.swift in Sources */,
 				2F58D50826522A7800D04EAD /* SearchCoordinator.swift in Sources */,
 				2F33754026520E3B0062EAA6 /* FollowersListVC.swift in Sources */,
 				2F3374F7265209970062EAA6 /* Date+Ext.swift in Sources */,
 				2F33751626520B1B0062EAA6 /* GFTextField.swift in Sources */,
+				2F2EFB472654B75A00738D66 /* FollowerViewModel.swift in Sources */,
 				2F33751226520AE90062EAA6 /* GFSecondaryLabel.swift in Sources */,
 				2F33753D26520DAD0062EAA6 /* SearchVC.swift in Sources */,
 				2F33753126520C850062EAA6 /* GFAlertContainerView.swift in Sources */,

@@ -10,15 +10,22 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     private let searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
-    private let followerCoordinator = FollowersCoordinator(navigationController: UINavigationController())
+    private let favoritesCoordinator = FavoritesCoordinator(navigationController: UINavigationController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupAppearance()
         searchCoordinator.start()
-        followerCoordinator.start()
+        favoritesCoordinator.start()
         
-        viewControllers = [searchCoordinator.navigationController, followerCoordinator.navigationController]
+        viewControllers = [searchCoordinator.navigationController, favoritesCoordinator.navigationController]
+    }
+    
+    private func setupAppearance() {
+        UITabBar.appearance().tintColor = .systemGreen
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().tintColor = .systemGreen
     }
 
 }

@@ -24,6 +24,12 @@ class SearchCoordinator: Coordinator {
         navigationController.pushViewController(searchVC, animated: false)
     }
     
+    func pushToFollowersList(username: String) {
+        let followersListVC = FollowersListVC()
+        followersListVC.title = username
+        navigationController.pushViewController(followersListVC, animated: true)
+    }
+    
     func childDidFinish() {
         parentCoordinator?.childDidFinish(self)
     }

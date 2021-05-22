@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchVC: UIViewController {
     
@@ -17,15 +18,17 @@ class SearchVC: UIViewController {
     
     var isUsernameEntered: Bool { return !searchTextField.text!.isEmpty }
     var iconViewTopConstraints: NSLayoutConstraint!
+    let viewModel = FollowerViewModel(manager: NetworkManager())
+    let disposeBag      = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
-        searchTextField.text = "Sallen0400"
         setupImageView()
         setupTextfield()
         setupCalloutBtn()
+        searchTextField.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +68,7 @@ class SearchVC: UIViewController {
     
     private func setupCalloutBtn() {
         view.addSubview(calloutBtn)
+        calloutBtn.addTarget(self, action: #selector(searchFollowers), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             calloutBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -48),
@@ -72,6 +76,11 @@ class SearchVC: UIViewController {
             calloutBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -52),
             calloutBtn.heightAnchor.constraint(equalToConstant: 52)
         ])
+    }
+    
+    @objc private func searchFollowers() {
+        viewModel.fetchFollowers()
+        coordinator?.pushToFollowersList(username: searchTextField.text!)
     }
 
 }

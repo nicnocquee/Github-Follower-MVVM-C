@@ -18,10 +18,10 @@ class FollowersCoordinator: Coordinator {
     }
     
     func start() {
-        let followersListVC = FollowersListVC()
-        followersListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        followersListVC.coordinator = self
-        navigationController.pushViewController(followersListVC, animated: false)
+//        let followersListVC = FollowersListVC()
+//        followersListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+//        followersListVC.coordinator = self
+//        navigationController.pushViewController(followersListVC, animated: false)
     }
     
     func childDidFinish() {
