@@ -18,9 +18,10 @@ class SearchCoordinator: Coordinator {
     }
     
     func start() {
-        let searchVC = SearchVC()
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        searchVC.coordinator = self
+        let viewModel           = FollowerViewModel(manager: NetworkManager())
+        let searchVC            = SearchVC(viewModel: viewModel)
+        searchVC.tabBarItem     = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        searchVC.coordinator    = self
         navigationController.pushViewController(searchVC, animated: false)
     }
     

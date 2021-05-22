@@ -18,9 +18,20 @@ class SearchVC: UIViewController {
     
     var isUsernameEntered: Bool { return !searchTextField.text!.isEmpty }
     var iconViewTopConstraints: NSLayoutConstraint!
-    let viewModel = FollowerViewModel(manager: NetworkManager())
+    
+    var viewModel: FollowerViewModel
+    
     let disposeBag      = DisposeBag()
-
+    
+    init(viewModel: FollowerViewModel) {
+        self.viewModel  = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
