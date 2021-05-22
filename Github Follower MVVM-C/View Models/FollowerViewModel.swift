@@ -33,6 +33,7 @@ class FollowerViewModel {
     
     // Output
     let hasUsername     = BehaviorSubject<Bool>(value: false)
+    let hasMoreFollower = BehaviorSubject<Bool>(value: false)
     var followers       = BehaviorSubject<[Follower]>(value: [])
     
     let disposeBag      = DisposeBag()
