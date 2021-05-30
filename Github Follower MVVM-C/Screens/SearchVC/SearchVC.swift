@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class SearchVC: UIViewController {
     
@@ -19,11 +20,12 @@ class SearchVC: UIViewController {
     var isUsernameEntered: Bool { return !searchTextField.text!.isEmpty }
     var iconViewTopConstraints: NSLayoutConstraint!
     
-    var viewModel: FollowerViewModel
+    var viewModel: FollowersListViewModel
+    var followers: [Follower] = []
     
     let disposeBag      = DisposeBag()
     
-    init(viewModel: FollowerViewModel) {
+    init(viewModel: FollowersListViewModel) {
         self.viewModel  = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,7 +41,10 @@ class SearchVC: UIViewController {
         setupImageView()
         setupTextfield()
         setupCalloutBtn()
-        searchTextField.rx.text.orEmpty.bind(to: viewModel.searchText).disposed(by: disposeBag)
+        
+        searchTextField.rx.text.orEmpty
+            .bind(to: viewModel.searchText)
+            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,8 +95,8 @@ class SearchVC: UIViewController {
     }
     
     @objc private func searchFollowers() {
-        viewModel.fetchFollowers()
-        coordinator?.pushToFollowersList(username: searchTextField.text!)
+        viewModel.fetchFollowers(with: viewModel.searchText.value)
+        print(followers)
     }
 
 }
