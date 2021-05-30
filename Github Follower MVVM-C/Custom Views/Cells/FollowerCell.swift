@@ -24,8 +24,8 @@ class FollowersCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(follower: Follower) {
-        usernameLabel.text = follower.login
+    func set(followerVM: FollowerViewModel) {
+        usernameLabel.text = followerVM.username
 //        NetworkManager.shared.getImage(from: follower.avatarUrl, complete: { [weak self] image in
 //            guard let self = self else { return }
 //            DispatchQueue.main.async { self.avatarImageView.image = image }

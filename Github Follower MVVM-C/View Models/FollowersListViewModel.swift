@@ -45,7 +45,6 @@ class FollowersListViewModel {
             } onError: { error in
                 print(error)
             }.disposed(by: disposeBag)
-
     }
     
 }

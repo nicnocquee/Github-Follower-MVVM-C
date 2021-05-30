@@ -12,21 +12,21 @@ class SearchCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     
     var navigationController: UINavigationController
+    private let viewModel         = FollowersListViewModel(manager: NetworkManager())
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewModel           = FollowersListViewModel(manager: NetworkManager())
         let searchVC            = SearchVC(viewModel: viewModel)
         searchVC.tabBarItem     = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         searchVC.coordinator    = self
         navigationController.pushViewController(searchVC, animated: false)
     }
     
-    func pushToFollowersList(username: String) {
-        let followersListVC = FollowersListVC()
+    func pushToFollowersList(username: String, viewModel: FollowersListViewModel) {
+        let followersListVC = FollowersListVC(viewModel: viewModel)
         followersListVC.title = username
         navigationController.pushViewController(followersListVC, animated: true)
     }

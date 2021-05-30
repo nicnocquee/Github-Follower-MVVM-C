@@ -22,3 +22,7 @@ extension FollowerViewModel {
         self.avatarUrl  = follower.avatarUrl
     }
 }
+
+extension FollowerViewModel: Hashable {
+    
+}

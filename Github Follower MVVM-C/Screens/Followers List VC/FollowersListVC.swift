@@ -10,12 +10,22 @@ import UIKit
 class FollowersListVC: UIViewController {
     
     weak var coordinator: FollowersCoordinator?
+    var viewModel: FollowersListViewModel
     
     enum Section { case main }
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-
+    var dataSource: UICollectionViewDiffableDataSource<Section, FollowerViewModel>!
+    
+    init(viewModel: FollowersListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
@@ -50,9 +60,9 @@ class FollowersListVC: UIViewController {
     }
     
     private func setupCollectionViewDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, FollowerViewModel>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowersCell.reuseID, for: indexPath) as! FollowersCell
-            cell.set(follower: follower)
+            cell.set(followerVM: follower)
             
             return cell
         })
