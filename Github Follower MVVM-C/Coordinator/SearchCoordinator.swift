@@ -26,8 +26,9 @@ class SearchCoordinator: Coordinator {
     }
     
     func pushToFollowersList(username: String, viewModel: FollowersListViewModel) {
-        let followersListVC = FollowersListVC(viewModel: viewModel)
-        followersListVC.title = username
+        let followersListVC         = FollowersListVC(viewModel: viewModel)
+        followersListVC.username    = username
+        followersListVC.title       = username
         navigationController.pushViewController(followersListVC, animated: true)
     }
     

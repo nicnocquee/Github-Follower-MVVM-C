@@ -95,7 +95,6 @@ class SearchVC: UIViewController {
     }
     
     @objc private func searchFollowers() {
-        viewModel.fetchFollowers(with: viewModel.searchText.value)
         coordinator?.pushToFollowersList(username: viewModel.searchText.value, viewModel: viewModel)
         print(followers)
     }

@@ -24,5 +24,11 @@ extension FollowerViewModel {
 }
 
 extension FollowerViewModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(username)
+    }
     
+    static func == (lhs: FollowerViewModel, rhs: FollowerViewModel) -> Bool {
+        return lhs.username == rhs.username
+    }
 }

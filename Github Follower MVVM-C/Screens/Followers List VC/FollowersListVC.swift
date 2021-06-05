@@ -16,6 +16,7 @@ class FollowersListVC: UIViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, FollowerViewModel>!
+    var username: String!
     
     init(viewModel: FollowersListViewModel) {
         self.viewModel = viewModel
@@ -32,6 +33,8 @@ class FollowersListVC: UIViewController {
         setupSearchController()
         setupCollectionView()
         setupCollectionViewDataSource()
+        viewModel.fetchFollowers(with: username)
+        setupSnapshot()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +69,14 @@ class FollowersListVC: UIViewController {
             
             return cell
         })
+    }
+    
+    private func setupSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, FollowerViewModel>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(viewModel.followers.value)
+        
+        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
     
     private func setupSearchController() {
