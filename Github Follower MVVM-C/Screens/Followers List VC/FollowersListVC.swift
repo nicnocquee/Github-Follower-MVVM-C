@@ -29,6 +29,12 @@ class FollowersListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // I'm not so familiar with RxSwift so the following code might not be correct, but the idea is, you need to call setupSnapshot when the followers variable changes.
+        // Read the "Update Data in Collection View" section in this link https://developer.apple.com/documentation/uikit/views_and_controls/collection_views/implementing_modern_collection_views
+        viewModel.followers.asObservable().subscribe { event in
+            self.setupSnapshot()
+        }
         setupViewController()
         setupSearchController()
         setupCollectionView()
